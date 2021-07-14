@@ -183,7 +183,7 @@ class HappyFolksAgent(Agent):
                                 happiness_var+=1
                                 self.add_to_latest_news("%s met with %s and is happy about it"%(self.agent_name,neighbor.agent_name))
                             else:
-                                self.add_to_latest_news("%s met with %s and does not really care about other people"%(self.agent_name,neighbor.agent_name))
+                                self.add_to_latest_news("%s met with %s and is fine but does not really care about other people"%(self.agent_name,neighbor.agent_name))
 
                         else:
                             happiness_var=self.model.relation_dislike_happiness_var
@@ -198,7 +198,7 @@ class HappyFolksAgent(Agent):
                                     self.model.relations_matrix[neighbor.agent_id,self.agent_id]+=-0.3
                                     
                                     if random.randint(0,self.violence+neighbor.violence)<self.violence:
-                                        self.happiness+=2
+                                        happiness_var+=2
                                         neighbor.happiness+=-2
                                         self.add_to_latest_news("%s threw %s on the ground"%(self.agent_name, neighbor.agent_name))
                                         visited=[]
@@ -223,8 +223,8 @@ class HappyFolksAgent(Agent):
                                             self.model.money_list[neighbor.agent_id]=-1
                             
                                     else:
-                                        self.happiness+=-2
-                                        neighbor.happiness+=+2
+                                        happiness_var+=-2
+                                        neighbor.happiness+=2
                                         self.add_to_latest_news("%s threw %s on the ground"%(neighbor.agent_name,self.agent_name))
                                         visited=[]                                    
                                         for obj in gc.get_objects():
@@ -365,6 +365,7 @@ class HappyFolksAgent(Agent):
                                         self.add_to_latest_news("They affected %s happiness"%(obj.agent_name))
                                                                                                                    
                         ###
+                        self.add_to_latest_news("Hapiness var of %s : %2.f"%(self.agent_name,happiness_var))
                         self.happiness += happiness_var
                         self.model.model_happiness += happiness_var
                         happiness_list[self.agent_id]=self.happiness
@@ -568,8 +569,8 @@ class HappyFolks(Model):
 
 money_init="pre_defined"
 matrix_init="pre_defined"
-nsteps=100
-model = HappyFolks(plotmat=False,plotmoney=False,plotstep=5,
+nsteps=10
+model = HappyFolks(plotmat=True,plotmoney=False,plotstep=1,
                    matrix_init=matrix_init,money_init=money_init,verbose=0,n_agent=len(names))
 for i in range(nsteps):
     print("Step",i)
@@ -581,6 +582,9 @@ plt.figure(figsize=(10,10))
 labels=names
 for y_arr, label in zip(np.transpose(np.array(money_list_stock)), labels):
     plt.plot(range(nsteps), y_arr, label=label)
+plt.xticks(range(nsteps),range(1,nsteps+1))   
+if nsteps<=20:   
+    plt.vlines(range(nsteps),ymin=np.array(money_list_stock).min(),ymax=np.array(money_list_stock).max(),colors="black",linestyles="dashed")
 plt.legend()
 plt.show()
 
@@ -588,7 +592,10 @@ plt.figure(figsize=(10,10))
 labels=names
 for y_arr, label in zip(np.transpose(np.array(happiness_list_stock)), labels):
     plt.plot(range(nsteps), y_arr, label=label)
-    
+plt.xticks(range(nsteps),range(1,nsteps+1))
+
+if nsteps<=20:   
+    plt.vlines(range(nsteps),ymin=np.array(happiness_list_stock).min(),ymax=np.array(happiness_list_stock).max(),colors="black",linestyles="dashed")
 plt.legend()
 plt.show()
 
@@ -598,6 +605,8 @@ fig,ax = plt.subplots(figsize=(10,10))
 ax.plot(n_alive_agents,color="red")
 ax.set_xlabel("step",fontsize=14)
 ax.set_ylabel("number of agents alive",color="red")
+ax.set_xticks(range(nsteps))
+ax.set_xticklabels(range(1,nsteps+1))
 #ax2=ax.twinx()
 #ax2.plot(np.array(happiness_list_stock).sum(axis=1),color="blue")
 #ax2.set_ylabel("total happiness",color="blue")

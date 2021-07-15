@@ -1,0 +1,400 @@
+Scenario - Telenabehem
+15-Jul-2021 (20:03)
+
+ ------------------------------------------------------------- 
+------ Name Bill ------ 
+Violence level : 10 
+Risk taker (business) : 0.2 
+Happiness at start : 14 
+Sociability : 40 
+Money at start : 100 
+ Relation with Bob : 0.9 
+ Relation with Brad : 0.4 
+ Relation with Mary : 0.5 
+ Relation with Margaret : 0.8 
+ Relation with Melany : 0.3 
+------ Name Bob ------ 
+Violence level : 60 
+Risk taker (business) : 0.1 
+Happiness at start : -4 
+Sociability : 80 
+Money at start : 100 
+ Relation with Bill : 0.9 
+ Relation with Brad : 0.7 
+ Relation with Mary : 0.5 
+ Relation with Margaret : 0.8 
+ Relation with Melany : 0.7 
+------ Name Brad ------ 
+Violence level : 40 
+Risk taker (business) : 0.4 
+Happiness at start : -11 
+Sociability : 30 
+Money at start : 100 
+ Relation with Bill : 0.4 
+ Relation with Bob : 0.7 
+ Relation with Mary : 0.8 
+ Relation with Margaret : 0.3 
+ Relation with Melany : 0.7 
+------ Name Mary ------ 
+Violence level : 20 
+Risk taker (business) : 0.2 
+Happiness at start : -9 
+Sociability : 50 
+Money at start : 100 
+ Relation with Bill : 0.5 
+ Relation with Bob : 0.5 
+ Relation with Brad : 0.8 
+ Relation with Margaret : 0.3 
+ Relation with Melany : 0.9 
+------ Name Margaret ------ 
+Violence level : 70 
+Risk taker (business) : 0.5 
+Happiness at start : 18 
+Sociability : 20 
+Money at start : 100 
+ Relation with Bill : 0.8 
+ Relation with Bob : 0.8 
+ Relation with Brad : 0.3 
+ Relation with Mary : 0.3 
+ Relation with Melany : 0.4 
+------ Name Melany ------ 
+Violence level : 50 
+Risk taker (business) : 0.1 
+Happiness at start : -10 
+Sociability : 60 
+Money at start : 100 
+ Relation with Bill : 0.3 
+ Relation with Bob : 0.7 
+ Relation with Brad : 0.7 
+ Relation with Mary : 0.9 
+ Relation with Margaret : 0.4 
+
+ ------------------------------------------------------------- 
+Episode 1
+ --Brad met with Bill and does not like it
+ --Hapiness var of Brad : -1
+ ------------------------------------------------------------- 
+Episode 2
+ --Brad met with Margaret and does not like it
+ --Hapiness var of Brad : -1
+ ------------------------------------------------------------- 
+Episode 3
+ --Bob met with Melany and is thrilled about it
+ --Bob and Melany made business and made  8 percent out of it
+ --Hapiness var of Bob :  5
+ --Bill met with Mary and does not like it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 4
+ --Bill met with Mary and is fine but does not really care about other people
+ --Bill and Mary made business and made  6 percent out of it
+ --Hapiness var of Bill :  3
+ ------------------------------------------------------------- 
+Episode 5
+ --Bob met with Margaret and is thrilled about it
+ --Bob and Margaret made business and made -38 percent out of it
+ --Hapiness var of Bob :  1
+ --Brad met with Melany and is fine but does not really care about other people
+ --Brad and Melany made business and made -3 percent out of it
+ --Hapiness var of Brad : -1
+ ------------------------------------------------------------- 
+Episode 6
+ ------------------------------------------------------------- 
+Episode 7
+ --Melany met with Margaret and does not like it
+ --Hapiness var of Melany : -1
+ --Margaret met with Brad and does not like it
+ --Margaret and Brad fought
+ --Margaret threw Brad on the ground
+ --Mary is sad for Brad
+ --Bob is sad for Brad
+ --Melany is sad for Brad
+ --Hapiness var of Margaret :  1
+ ------------------------------------------------------------- 
+Episode 8
+ --Bill met with Melany and does not like it
+ --Hapiness var of Bill : -1
+ --Bob met with Melany and is thrilled about it
+ --Bob and Melany made business and made 11 percent out of it
+ --I love you my dear Melany, yours for ever Bob
+ --Hapiness var of Bob :  8
+ --Brad met with Bill and does not like it
+ --Hapiness var of Brad : -1
+ ------------------------------------------------------------- 
+Episode 9
+ --Brad met with Margaret and does not like it
+ --Brad and Margaret fought
+ --Margaret threw Brad on the ground
+ --Bill is sad for Brad
+ --Bob is sad for Brad
+ --Brad has been killed in the fight
+ --Hapiness var of Brad : -4
+ ------------------------------------------------------------- 
+Episode 10
+ ------------------------------------------------------------- 
+Episode 11
+ ------------------------------------------------------------- 
+Episode 12
+ --Mary met with Bill and is happy about it
+ --Mary and Bill made business and made -20 percent out of it
+ --I love you my dear Bill, yours for ever Mary
+ --Hapiness var of Mary :  3
+ --Melany met with Margaret and does not like it
+ --Melany and Margaret fought
+ --Margaret threw Melany on the ground
+ --Bill is sad for Melany
+ --Bob is sad for Melany
+ --Melany has been killed in the fight
+ --Hapiness var of Melany : -4
+ --Bill met with Bob and is fine but does not really care about other people
+ --Bill and Bob made business and made -4 percent out of it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 13
+ --Mary met with Bill and is happy about it
+ --Mary and Bill made business and made  7 percent out of it
+ --Glad to see you my beloved Bill, yours lovely Mary
+ --Hapiness var of Mary :  5
+ --Bob met with Margaret and is thrilled about it
+ --Bob and Margaret made business and made 64 percent out of it
+ --I love you my dear Margaret, yours for ever Bob
+ --Hapiness var of Bob :  8
+ ------------------------------------------------------------- 
+Episode 14
+ --Margaret met with Bob and is fine but does not really care about other people
+ --Margaret and Bob made business and made 36 percent out of it
+ --Glad to see you my beloved Bob, yours lovely Margaret
+ --Hapiness var of Margaret :  4
+ ------------------------------------------------------------- 
+Episode 15
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made  4 percent out of it
+ --Hapiness var of Bill :  3
+ --Mary met with Bob and does not like it
+ --Hapiness var of Mary : -1
+ ------------------------------------------------------------- 
+Episode 16
+ ------------------------------------------------------------- 
+Episode 17
+ --Bill met with Bob and is fine but does not really care about other people
+ --Bill and Bob made business and made  2 percent out of it
+ --Hapiness var of Bill :  3
+ ------------------------------------------------------------- 
+Episode 18
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made  5 percent out of it
+ --I love you my dear Margaret, yours for ever Bill
+ --Mary is mad at Bill for breaking their couple apart
+ --Bob is mad at Margaret for breaking their couple apart
+ --Hapiness var of Bill :  6
+ ------------------------------------------------------------- 
+Episode 19
+ ------------------------------------------------------------- 
+Episode 20
+ ------------------------------------------------------------- 
+Episode 21
+ ------------------------------------------------------------- 
+Episode 22
+ --Bill met with Bob and is fine but does not really care about other people
+ --Bill and Bob made business and made -6 percent out of it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 23
+ ------------------------------------------------------------- 
+Episode 24
+ --Mary met with Bob and does not like it
+ --Hapiness var of Mary : -1
+ ------------------------------------------------------------- 
+Episode 25
+ --Margaret met with Mary and does not like it
+ --Margaret and Mary fought
+ --Margaret threw Mary on the ground
+ --Bill is sad for Mary
+ --Hapiness var of Margaret :  1
+ ------------------------------------------------------------- 
+Episode 26
+ --Bob met with Bill and is thrilled about it
+ --Bob and Bill made business and made -10 percent out of it
+ --Hapiness var of Bob :  1
+ ------------------------------------------------------------- 
+Episode 27
+ --=== Mary suicided out of sadness ===
+ --Bill is sad after Mary suicide
+ --Bob is sad after Mary suicide
+ ------------------------------------------------------------- 
+Episode 28
+ ------------------------------------------------------------- 
+Episode 29
+ ------------------------------------------------------------- 
+Episode 30
+ --Bob met with Bill and is thrilled about it
+ --Bob and Bill made business and made  7 percent out of it
+ --Hapiness var of Bob :  5
+ ------------------------------------------------------------- 
+Episode 31
+ ------------------------------------------------------------- 
+Episode 32
+ --Bill met with Bob and is fine but does not really care about other people
+ --Bill and Bob made business and made  7 percent out of it
+ --Hapiness var of Bill :  3
+ ------------------------------------------------------------- 
+Episode 33
+ ------------------------------------------------------------- 
+Episode 34
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made -1 percent out of it
+ --Glad to see you my beloved Margaret, yours lovely Bill
+ --Hapiness var of Bill :  0
+ ------------------------------------------------------------- 
+Episode 35
+ ------------------------------------------------------------- 
+Episode 36
+ ------------------------------------------------------------- 
+Episode 37
+ --Bill met with Bob and is fine but does not really care about other people
+ --Bill and Bob made business and made -0 percent out of it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 38
+ ------------------------------------------------------------- 
+Episode 39
+ ------------------------------------------------------------- 
+Episode 40
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made 17 percent out of it
+ --Glad to see you my beloved Margaret, yours lovely Bill
+ --Hapiness var of Bill :  4
+ ------------------------------------------------------------- 
+Episode 41
+ --Bob met with Margaret and is thrilled about it
+ --Hapiness var of Bob :  3
+ ------------------------------------------------------------- 
+Episode 42
+ ------------------------------------------------------------- 
+Episode 43
+ ------------------------------------------------------------- 
+Episode 44
+ ------------------------------------------------------------- 
+Episode 45
+ ------------------------------------------------------------- 
+Episode 46
+ ------------------------------------------------------------- 
+Episode 47
+ ------------------------------------------------------------- 
+Episode 48
+ ------------------------------------------------------------- 
+Episode 49
+ ------------------------------------------------------------- 
+Episode 50
+ ------------------------------------------------------------- 
+Episode 51
+ --=== Bob suicided out of sadness ===
+ --Margaret is sad after Bob suicide
+ --Bill is sad after Bob suicide
+ ------------------------------------------------------------- 
+Episode 52
+ ------------------------------------------------------------- 
+Episode 53
+ ------------------------------------------------------------- 
+Episode 54
+ ------------------------------------------------------------- 
+Episode 55
+ ------------------------------------------------------------- 
+Episode 56
+ ------------------------------------------------------------- 
+Episode 57
+ ------------------------------------------------------------- 
+Episode 58
+ ------------------------------------------------------------- 
+Episode 59
+ ------------------------------------------------------------- 
+Episode 60
+ ------------------------------------------------------------- 
+Episode 61
+ ------------------------------------------------------------- 
+Episode 62
+ ------------------------------------------------------------- 
+Episode 63
+ ------------------------------------------------------------- 
+Episode 64
+ ------------------------------------------------------------- 
+Episode 65
+ ------------------------------------------------------------- 
+Episode 66
+ ------------------------------------------------------------- 
+Episode 67
+ ------------------------------------------------------------- 
+Episode 68
+ ------------------------------------------------------------- 
+Episode 69
+ ------------------------------------------------------------- 
+Episode 70
+ ------------------------------------------------------------- 
+Episode 71
+ ------------------------------------------------------------- 
+Episode 72
+ ------------------------------------------------------------- 
+Episode 73
+ ------------------------------------------------------------- 
+Episode 74
+ ------------------------------------------------------------- 
+Episode 75
+ ------------------------------------------------------------- 
+Episode 76
+ ------------------------------------------------------------- 
+Episode 77
+ ------------------------------------------------------------- 
+Episode 78
+ ------------------------------------------------------------- 
+Episode 79
+ ------------------------------------------------------------- 
+Episode 80
+ ------------------------------------------------------------- 
+Episode 81
+ ------------------------------------------------------------- 
+Episode 82
+ ------------------------------------------------------------- 
+Episode 83
+ ------------------------------------------------------------- 
+Episode 84
+ ------------------------------------------------------------- 
+Episode 85
+ ------------------------------------------------------------- 
+Episode 86
+ ------------------------------------------------------------- 
+Episode 87
+ ------------------------------------------------------------- 
+Episode 88
+ ------------------------------------------------------------- 
+Episode 89
+ ------------------------------------------------------------- 
+Episode 90
+ ------------------------------------------------------------- 
+Episode 91
+ ------------------------------------------------------------- 
+Episode 92
+ ------------------------------------------------------------- 
+Episode 93
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made -20 percent out of it
+ --Glad to see you my beloved Margaret, yours lovely Bill
+ --Hapiness var of Bill :  0
+ ------------------------------------------------------------- 
+Episode 94
+ ------------------------------------------------------------- 
+Episode 95
+ ------------------------------------------------------------- 
+Episode 96
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made  1 percent out of it
+ --Glad to see you my beloved Margaret, yours lovely Bill
+ --Hapiness var of Bill :  4
+ ------------------------------------------------------------- 
+Episode 97
+ ------------------------------------------------------------- 
+Episode 98
+ ------------------------------------------------------------- 
+Episode 99
+ ------------------------------------------------------------- 
+Episode 100
+ ------------------------------------------------------------- 

@@ -9,6 +9,7 @@ import gc
 import scipy.stats as stats
 import math
 import datetime
+from tqdm import tqdm
 
 names=["Bill","Bob","Brad","Mary","Margaret","Melany"]
 
@@ -42,13 +43,6 @@ suicide_thres_happiness=-10
 suicide_thres_money=3
 suicide_random_thres=0.25
 
-#Stock lists
-relations_matrix_stock=[]
-couples_matrix_stock=[]
-money_list_stock=[]
-happiness_list_stock=[]
-n_alive_agents=[]
-scenario=[]
 
 #%% Create relations matrix
 
@@ -169,6 +163,66 @@ class HappyFolksAgent(Agent):
             
             self.model.alive_agents+=1
             neighbor_num=0
+            
+            if self.model.external_disaster:
+                if random.random()<self.model.earthquake_proba/self.model.n_agent:
+                    self.add_to_latest_news("*** An earthquake has hit the city ***")
+                    visited=[]                                    
+                    for obj in gc.get_objects():
+                        if isinstance(obj, HappyFolksAgent):
+                            idagent=obj.agent_id
+                            if (idagent not in visited):
+                                visited.append(obj.agent_id)
+                                if (random.random()<0.05):
+                                    self.add_to_latest_news("%s died in the earthquake"%(obj.agent_name))
+                                    visited_bis=[]                                    
+                                    for other_obj in gc.get_objects():
+                                        if isinstance(other_obj, HappyFolksAgent):
+                                            idotheragent=other_obj.agent_id
+                                            if (idotheragent not in visited_bis):
+                                                visited_bis.append(other_obj.agent_id)
+                                                if (self.model.relations_matrix[obj.agent_id,idotheragent]>=0.5):
+                                                    self.add_to_latest_news("%s is sad after %s death"%(other_obj.agent_name,obj.agent_name))
+                                                    other_obj.happiness+=-2
+                                            
+                                    obj.dead=1                       
+                                    
+                                    self.model.couples_matrix[obj.agent_id,:]=np.nan
+                                    self.model.couples_matrix[:,obj.agent_id]=np.nan
+                                    self.model.relations_matrix[obj.agent_id,:]=np.nan
+                                    self.model.relations_matrix[:,obj.agent_id]=np.nan 
+                                    
+                                    obj.money=-1
+                                    self.model.money_list[obj.agent_id]=-1                                                    
+                    
+                                elif (random.random()<0.3):
+                                    self.add_to_latest_news("%s had its house destroyed in the earthquake"%(obj.agent_name))
+                                    obj.happiness+=-4
+                                else:
+                                    obj.happiness+=-2
+                                    
+                elif random.random()<self.model.financialcrisis_proba/self.model.n_agent:
+                    loss=random.uniform(0.5,1)
+                    self.add_to_latest_news("*** A financial crisis struck and the agents lost %s percent of their money"%(loss))
+                    visited=[]                                    
+                    for obj in gc.get_objects():
+                        if isinstance(obj, HappyFolksAgent):
+                            idagent=obj.agent_id
+                            if (idagent not in visited):
+                                visited.append(obj.agent_id)
+                                crisis_opportunity=random.uniform(obj.business_risk,1)                                            
+                                if (crisis_opportunity>0.9):
+                                    self.add_to_latest_news("%s made good choices and benefitted from the crisis"%(obj.agent_name))
+                                    obj.happiness+=2
+                                    obj.money*=2
+                                    self.model.money_list[obj.agent_id]*=2
+                                    
+                                else:
+                                    obj.happiness+=-2
+                                    obj.money*=(1-loss)   
+                                    self.model.money_list[obj.agent_id]*=(1-loss)
+
+            
             for neighbor in self.model.grid.neighbor_iter(self.pos):
                 if neighbor.dead==0:
                     if neighbor_num<1:
@@ -199,7 +253,7 @@ class HappyFolksAgent(Agent):
                                     
                                     if random.randint(0,self.violence+neighbor.violence)<self.violence:
                                         happiness_var+=2
-                                        neighbor.happiness+=-2
+                                        neighbor.happiness+=-3
                                         self.add_to_latest_news("%s threw %s on the ground"%(self.agent_name, neighbor.agent_name))
                                         visited=[]
                                         for obj in gc.get_objects():
@@ -223,7 +277,7 @@ class HappyFolksAgent(Agent):
                                             self.model.money_list[neighbor.agent_id]=-1
                             
                                     else:
-                                        happiness_var+=-2
+                                        happiness_var+=-3
                                         neighbor.happiness+=2
                                         self.add_to_latest_news("%s threw %s on the ground"%(neighbor.agent_name,self.agent_name))
                                         visited=[]                                    
@@ -263,8 +317,8 @@ class HappyFolksAgent(Agent):
                                 self.model.relations_matrix[self.agent_id,neighbor.agent_id]+=0.2
                                 self.model.relations_matrix[neighbor.agent_id,self.agent_id]+=0.2                        
                             else:
-                                happiness_var+=-1          
-                                neighbor.happiness=neighbor.happiness-1
+                                happiness_var+=-2          
+                                neighbor.happiness=neighbor.happiness-2
                             
                             self.add_to_latest_news("%s and %s made business and made %2.f percent out of it"%(self.agent_name,neighbor.agent_name,sucess*100))
                             
@@ -286,7 +340,7 @@ class HappyFolksAgent(Agent):
                                                 visited.append(idagent)
                                                 if (idagent==previous_partner_id):
                                                     self.add_to_latest_news("%s is mad at %s for breaking their couple apart"%(obj.agent_name,self.agent_name))
-                                                    obj.happiness+=-2
+                                                    obj.happiness+=-4
                                                     self.model.relations_matrix[self.agent_id,idagent]+=-0.4
                                                     self.model.relations_matrix[idagent,self.agent_id]+=-0.4
                                                     self.model.couples_matrix[self.agent_id,idagent]=0
@@ -303,7 +357,7 @@ class HappyFolksAgent(Agent):
                                                 visited.append(idagent)
                                                 if idagent==previous_partner_id:
                                                     self.add_to_latest_news("%s is mad at %s for breaking their couple apart"%(obj.agent_name,neighbor.agent_name))
-                                                    obj.happiness+=-2
+                                                    obj.happiness+=-4
                                                     self.model.relations_matrix[neighbor.agent_id,idagent]+=-0.4
                                                     self.model.relations_matrix[idagent,neighbor.agent_id]+=-0.4
                                                     self.model.couples_matrix[neighbor.agent_id,idagent]=0
@@ -315,7 +369,7 @@ class HappyFolksAgent(Agent):
         
                             elif self.model.couples_matrix[self.agent_id,neighbor.agent_id]==1:
                                 self.add_to_latest_news("Glad to see you my beloved %s, yours lovely %s"%(neighbor.agent_name,self.agent_name))
-                                happiness_var+=2
+                                happiness_var+=1
                                 
                         ##Common ennemy
                         if (relation_quality>conspiracy_thres) and (random.random()<conspiracy_random_thres):
@@ -368,7 +422,7 @@ class HappyFolksAgent(Agent):
                         self.add_to_latest_news("Hapiness var of %s : %2.f"%(self.agent_name,happiness_var))
                         self.happiness += happiness_var
                         self.model.model_happiness += happiness_var
-                        happiness_list[self.agent_id]=self.happiness
+                        self.model.happiness_list[self.agent_id]=self.happiness
     
                                             
                         
@@ -386,9 +440,9 @@ class HappyFolksAgent(Agent):
             
             if neighbor_num==0:
                 if self.sociability > 70 and random.random()<0.4:
-                    self.happiness+=-1
+                    self.happiness+=-2
                 elif self.sociability > 40 and random.random()<0.2:
-                    self.happiness+=-1
+                    self.happiness+=-2
                 elif self.sociability <= 20 and random.random()<0.2 :
                     self.happiness+=1
                     
@@ -401,6 +455,16 @@ class HappyFolksAgent(Agent):
                             else:
                                 self.add_to_latest_news("=== %s suicided out of sadness ==="%(self.agent_name))
 
+                            visited=[]                                    
+                            for obj in gc.get_objects():
+                                if isinstance(obj, HappyFolksAgent):
+                                    idagent=obj.agent_id
+                                    if (idagent not in visited):
+                                        visited.append(obj.agent_id)
+                                        if (self.model.relations_matrix[self.agent_id,idagent]>=0.5):
+                                            self.add_to_latest_news("%s is sad after %s suicide"%(obj.agent_name,self.agent_name))
+                                            obj.happiness+=-2
+                                            
                             self.dead=1                       
                             
                             self.model.couples_matrix[self.agent_id,:]=np.nan
@@ -410,6 +474,7 @@ class HappyFolksAgent(Agent):
                             
                             self.money=-1
                             self.model.money_list[self.agent_id]=-1
+                            
                     else:
                         if (random.random()<suicide_random_thres/2):
                             if (self.money<suicide_thres_money):
@@ -424,26 +489,39 @@ class HappyFolksAgent(Agent):
                                     if (idagent not in visited):
                                         visited.append(idagent)
                                         if idagent==partner_id:
+                                            partner=obj
                                             self.add_to_latest_news("=== %s sucided with %s out of love ==="%(obj.agent_name,self.agent_name))
-                                            self.dead=1                       
+
+
+                            visited=[]                                    
+                            for other_obj in gc.get_objects():
+                                if isinstance(other_obj, HappyFolksAgent):
+                                    idagent=other_obj.agent_id
+                                    if (idagent not in visited):
+                                        visited.append(other_obj.agent_id)    
+                                        if (self.model.relations_matrix[self.agent_id,idagent]>=0.5) or (self.model.relations_matrix[partner.agent_id,idagent]>=0.5):
+                                            self.add_to_latest_news("%s is sad after %s and %s suicide"%(other_obj.agent_name,partner.agent_name,self.agent_name))
+                                            other_obj.happiness+=-2
+                            
+                            self.dead=1                       
                                 
-                                            self.model.couples_matrix[self.agent_id,:]=np.nan
-                                            self.model.couples_matrix[:,self.agent_id]=np.nan
-                                            self.model.relations_matrix[self.agent_id,:]=np.nan
-                                            self.model.relations_matrix[:,self.agent_id]=np.nan 
+                            self.model.couples_matrix[self.agent_id,:]=np.nan
+                            self.model.couples_matrix[:,self.agent_id]=np.nan
+                            self.model.relations_matrix[self.agent_id,:]=np.nan
+                            self.model.relations_matrix[:,self.agent_id]=np.nan 
+                            
+                            self.money=-1
+                            self.model.money_list[self.agent_id]=-1
+
+                            partner.dead=1                       
+                            
+                            self.model.couples_matrix[partner.agent_id,:]=np.nan
+                            self.model.couples_matrix[:,partner.agent_id]=np.nan
+                            self.model.relations_matrix[partner.agent_id,:]=np.nan
+                            self.model.relations_matrix[:,partner.agent_id]=np.nan 
                                             
-                                            self.money=-1
-                                            self.model.money_list[self.agent_id]=-1
-    
-                                            obj.dead=1                       
-                                
-                                            self.model.couples_matrix[obj.agent_id,:]=np.nan
-                                            self.model.couples_matrix[:,obj.agent_id]=np.nan
-                                            self.model.relations_matrix[obj.agent_id,:]=np.nan
-                                            self.model.relations_matrix[:,obj.agent_id]=np.nan 
-                                            
-                                            obj.money=-1
-                                            self.model.money_list[obj.agent_id]=-1
+                            partner.money=-1
+                            self.model.money_list[partner.agent_id]=-1
                                         
             
             self.model.grid.move_to_empty(self)
@@ -453,6 +531,8 @@ class HappyFolksAgent(Agent):
                 print("%s is now dead"%(self.agent_name))
                 
             self.happiness=0
+            self.model.happiness_list[self.agent_id]=0
+            self.model.money_list[self.agent_id]=0
 
 
 
@@ -463,9 +543,14 @@ class HappyFolks(Model):
 
     def __init__(self, height=10, width=10, n_agent=len(names),plotmat=False,plotmoney=False,
                  plotstep=1,matrix_init="pre_defined",money_init="pre_defined",verbose=1,
-                 relation_like_happiness_var=1,relation_dislike_happiness_var=-1):
+                 relation_like_happiness_var=1,relation_dislike_happiness_var=-1,external_disaster=False,
+                 earthquake_proba=0.01,financialcrisis_proba=0.02):
         
         """"""
+                
+        self.external_disaster=external_disaster
+        self.earthquake_proba=earthquake_proba
+        self.financialcrisis_proba=financialcrisis_proba
         
         self.verbose=verbose
 
@@ -487,6 +572,7 @@ class HappyFolks(Model):
         self.model_happiness = 0
         self.relations_matrix=make_matrix_relations(names,mode=self.matrix_init)
         self.couples_matrix=np.zeros((n_agent,n_agent))
+        self.happiness_list=[0]*self.n_agent
         
         self.money_list=make_money_list(names,mode=self.money_init)
         
@@ -511,7 +597,7 @@ class HappyFolks(Model):
             
             x=pos[0]
             y=pos[1]
-            print(x,y)
+            #print(x,y)
             
             agent_type = 0
             agent_id = i
@@ -551,39 +637,160 @@ class HappyFolks(Model):
             plt.bar(names[:self.n_agent],self.money_list[:self.n_agent])
             plt.title("Money at step : %2.f"%(self.stepnum))
             
-        relations_matrix_stock.append(self.relations_matrix.copy())
-        couples_matrix_stock.append(self.couples_matrix.copy())
-        money_list_stock.append(self.money_list[:])
-        happiness_list_stock.append(happiness_list[:])
-        n_alive_agents.append(self.alive_agents)
-        scenario.append(self.latest_news)
+        
+        #relations_matrix_stock.append(self.relations_matrix.copy())
+        #couples_matrix_stock.append(self.couples_matrix.copy())
+        #money_list_stock.append(self.money_list[:])
+        #happiness_list_stock.append(happiness_list[:])
+        #n_alive_agents.append(self.alive_agents)
+        #scenario.append(self.latest_news)
         
         #print(self.latest_news)
         
         if False:
             self.running = False
 
+        return(self.relations_matrix,self.couples_matrix,self.money_list,self.happiness_list,self.alive_agents,self.latest_news)
+       
 
-#%% Run the model
+#%%
 
+#Stock lists
+relations_matrix_stock=[]
+couples_matrix_stock=[]
+money_list_stock=[]
+happiness_list_stock=[]
+n_alive_agents=[]
+scenario=[]
 
+#init
 money_init="pre_defined"
 matrix_init="pre_defined"
-nsteps=10
-model = HappyFolks(plotmat=True,plotmoney=False,plotstep=1,
-                   matrix_init=matrix_init,money_init=money_init,verbose=0,n_agent=len(names))
+nsteps=100
+
+model = HappyFolks(plotmat=False,plotmoney=False,plotstep=20,
+                   matrix_init=matrix_init,money_init=money_init,verbose=0,
+                   n_agent=len(names),external_disaster=False)
+    
 for i in range(nsteps):
     print("Step",i)
-    model.step()
+    relations,couples,money,happiness,alive,latest_news=model.step()
     
+    relations_matrix_stock.append(relations.copy())
+    couples_matrix_stock.append(couples.copy())
+    money_list_stock.append(money[:])
+    happiness_list_stock.append(happiness[:])
+    n_alive_agents.append(alive)
+    scenario.append(latest_news)
+
+#%% MultiRun the model for various violence lists
+
+#init
+money_init="pre_defined"
+matrix_init="pre_defined"
+
+def test_various_violence(list_of_list_violence,n_iter=100,nsteps_per_iter=20):
+    levels_results_happiness={}
+    levels_results_money={}
+    levels_results_couples={}
+    levels_results_nagents={}
+    levels_resutls_scenario={}
+    global violence_list
     
+    for violence_list in list_of_list_violence:
+        print("Testing violence list %s"%(str(violence_list)))
+        
+        level_result_happiness=[]
+        level_result_money=[]
+        level_result_couples=[]
+        level_result_nagents=[]
+        level_result_scenario=[]
+        for i in tqdm(range(n_iter)):
+            relations_matrix_stock=[]            
+            couples_matrix_stock=[]
+            money_list_stock=[]
+            happiness_list_stock=[]
+            n_alive_agents=[]
+            scenario=[]
+            
+            
+            model = HappyFolks(plotmat=False,plotmoney=False,plotstep=20,
+                               matrix_init=matrix_init,money_init=money_init,verbose=0,
+                               n_agent=len(names),external_disaster=False)
+    
+            for i in range(nsteps_per_iter):
+                #print("Step",i)
+                relations,couples,money,happiness,alive,latest_news=model.step()
+                
+                relations_matrix_stock.append(relations.copy())
+                couples_matrix_stock.append(couples.copy())
+                money_list_stock.append(money[:])
+                happiness_list_stock.append(happiness[:])
+                n_alive_agents.append(alive)
+                scenario.append(latest_news)
+            
+            level_result_happiness.append(happiness_list_stock.copy())
+            level_result_money.append(money_list_stock.copy())
+            level_result_couples.append(list(map(lambda a: a[np.isnan(a)==False].sum()/2,couples_matrix_stock)).copy())
+            level_result_nagents.append(n_alive_agents.copy())
+            level_result_scenario.append(scenario.copy())
+            
+        levels_results_happiness[str(violence_list)]=level_result_happiness.copy()
+        levels_results_money[str(violence_list)]=level_result_money.copy()
+        levels_results_couples[str(violence_list)]=level_result_couples.copy()
+        levels_results_nagents[str(violence_list)]=level_result_nagents.copy()
+        levels_resutls_scenario[str(violence_list)]=level_result_scenario.copy()
+        
+    return(levels_results_happiness,levels_results_money,levels_results_couples,levels_results_nagents)
+
+happiness_dic,money_dic,couples_dic,nagents_dic=test_various_violence([[10,60,40,20,70,50],[10,20,10,10,10,20],[70,90,40,50,70,80],[90,10,20,20,30,20]])
+
+plt.figure(figsize=(10,10))
+for key in list(happiness_dic.keys()):
+    z=np.array(happiness_dic[key][:]).sum(axis=2)
+    t=np.array(nagents_dic[key][:])
+    u=(z/t).mean(axis=0)
+    plt.plot(u,label=key)
+
+plt.legend()
+plt.title('Average happiness of agents (alive), 5 iter for various levels of violence_list')
+
+plt.figure(figsize=(10,10))
+for key in list(money_dic.keys()):
+    z=np.array(money_dic[key][:]).sum(axis=2)
+    t=np.array(nagents_dic[key][:])
+    u=(z/t).mean(axis=0)
+    plt.plot(u,label=key)
+
+plt.legend()
+plt.title('Average money of agents (alive), 5 iter for various levels of violence_list')
+
+
+plt.figure(figsize=(10,10))
+for key in list(couples_dic.keys()):
+    z=np.array(couples_dic[key][:]).mean(axis=0)
+    plt.plot(z,label=key)
+
+plt.legend()
+plt.title('Average number of couples, 5 iter for various levels of violence_list')
+    
+
+plt.figure(figsize=(10,10))
+for key in list(nagents_dic.keys()):
+    z=np.array(nagents_dic[key][:]).mean(axis=0)
+    plt.plot(z,label=key)
+
+plt.legend()
+plt.title('Average number of alive agents, 5 iter for various levels of violence_list')
+    
+
 #%% Plot figures
 plt.figure(figsize=(10,10))
 labels=names
 for y_arr, label in zip(np.transpose(np.array(money_list_stock)), labels):
     plt.plot(range(nsteps), y_arr, label=label)
-plt.xticks(range(nsteps),range(1,nsteps+1))   
 if nsteps<=20:   
+    plt.xticks(range(nsteps),range(1,nsteps+1))   
     plt.vlines(range(nsteps),ymin=np.array(money_list_stock).min(),ymax=np.array(money_list_stock).max(),colors="black",linestyles="dashed")
 plt.legend()
 plt.show()
@@ -592,9 +799,8 @@ plt.figure(figsize=(10,10))
 labels=names
 for y_arr, label in zip(np.transpose(np.array(happiness_list_stock)), labels):
     plt.plot(range(nsteps), y_arr, label=label)
-plt.xticks(range(nsteps),range(1,nsteps+1))
-
 if nsteps<=20:   
+    plt.xticks(range(nsteps),range(1,nsteps+1))
     plt.vlines(range(nsteps),ymin=np.array(happiness_list_stock).min(),ymax=np.array(happiness_list_stock).max(),colors="black",linestyles="dashed")
 plt.legend()
 plt.show()
@@ -605,8 +811,10 @@ fig,ax = plt.subplots(figsize=(10,10))
 ax.plot(n_alive_agents,color="red")
 ax.set_xlabel("step",fontsize=14)
 ax.set_ylabel("number of agents alive",color="red")
-ax.set_xticks(range(nsteps))
-ax.set_xticklabels(range(1,nsteps+1))
+
+if nsteps<=20:
+    ax.set_xticks(range(nsteps))
+    ax.set_xticklabels(range(1,nsteps+1))
 #ax2=ax.twinx()
 #ax2.plot(np.array(happiness_list_stock).sum(axis=1),color="blue")
 #ax2.set_ylabel("total happiness",color="blue")
@@ -628,7 +836,6 @@ with open(path+'\\scenario_'+now+'.txt', 'w') as f:
         f.write("------ Name %s ------ \n"%(name))
         f.write("Violence level : %s \n"%(violence_list[i]))
         f.write("Risk taker (business) : %s \n"%(business_risk[i]))
-        f.write("Happiness at start : %s \n"%(happiness_list[i]))
         f.write("Sociability : %s \n"%(sociability_list[i]))
         if money_init=="pre_defined":
             f.write("Money at start : %s \n"%(make_money_list(names)[i]))

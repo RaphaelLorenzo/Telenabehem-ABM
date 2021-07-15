@@ -1,0 +1,358 @@
+Scenario - Telenabehem
+15-Jul-2021 (20:26)
+
+ ------------------------------------------------------------- 
+------ Name Bill ------ 
+Violence level : 10 
+Risk taker (business) : 0.2 
+Happiness at start : -6 
+Sociability : 40 
+Money at start : 100 
+ Relation with Bob : 0.9 
+ Relation with Brad : 0.4 
+ Relation with Mary : 0.5 
+ Relation with Margaret : 0.8 
+ Relation with Melany : 0.3 
+------ Name Bob ------ 
+Violence level : 60 
+Risk taker (business) : 0.1 
+Happiness at start : -6 
+Sociability : 80 
+Money at start : 100 
+ Relation with Bill : 0.9 
+ Relation with Brad : 0.7 
+ Relation with Mary : 0.5 
+ Relation with Margaret : 0.8 
+ Relation with Melany : 0.7 
+------ Name Brad ------ 
+Violence level : 40 
+Risk taker (business) : 0.4 
+Happiness at start : -9 
+Sociability : 30 
+Money at start : 100 
+ Relation with Bill : 0.4 
+ Relation with Bob : 0.7 
+ Relation with Mary : 0.8 
+ Relation with Margaret : 0.3 
+ Relation with Melany : 0.7 
+------ Name Mary ------ 
+Violence level : 20 
+Risk taker (business) : 0.2 
+Happiness at start : -3 
+Sociability : 50 
+Money at start : 100 
+ Relation with Bill : 0.5 
+ Relation with Bob : 0.5 
+ Relation with Brad : 0.8 
+ Relation with Margaret : 0.3 
+ Relation with Melany : 0.9 
+------ Name Margaret ------ 
+Violence level : 70 
+Risk taker (business) : 0.5 
+Happiness at start : 5 
+Sociability : 20 
+Money at start : 100 
+ Relation with Bill : 0.8 
+ Relation with Bob : 0.8 
+ Relation with Brad : 0.3 
+ Relation with Mary : 0.3 
+ Relation with Melany : 0.4 
+------ Name Melany ------ 
+Violence level : 50 
+Risk taker (business) : 0.1 
+Happiness at start : -9 
+Sociability : 60 
+Money at start : 100 
+ Relation with Bill : 0.3 
+ Relation with Bob : 0.7 
+ Relation with Brad : 0.7 
+ Relation with Mary : 0.9 
+ Relation with Margaret : 0.4 
+
+ ------------------------------------------------------------- 
+Episode 1
+ --Bill met with Mary and does not like it
+ --Hapiness var of Bill : -1
+ --Margaret met with Melany and does not like it
+ --Hapiness var of Margaret : -1
+ --Brad met with Margaret and does not like it
+ --Hapiness var of Brad : -1
+ --Bob met with Brad and is thrilled about it
+ --Bob and Brad made business and made -11 percent out of it
+ --Hapiness var of Bob :  1
+ ------------------------------------------------------------- 
+Episode 2
+ --Bob met with Brad and is thrilled about it
+ --Bob and Brad made business and made 10 percent out of it
+ --Hapiness var of Bob :  5
+ ------------------------------------------------------------- 
+Episode 3
+ --Brad met with Bob and is fine but does not really care about other people
+ --Brad and Bob made business and made 14 percent out of it
+ --Hapiness var of Brad :  3
+ --Bob met with Margaret and is thrilled about it
+ --Bob and Margaret made business and made  3 percent out of it
+ --Hapiness var of Bob :  5
+ --Margaret met with Bob and is fine but does not really care about other people
+ --Margaret and Bob made business and made -33 percent out of it
+ --I love you my dear Bob, yours for ever Margaret
+ --Hapiness var of Margaret :  2
+ ------------------------------------------------------------- 
+Episode 4
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made 44 percent out of it
+ --Hapiness var of Bill :  3
+ --Brad met with Bill and does not like it
+ --Hapiness var of Brad : -1
+ --Margaret met with Mary and does not like it
+ --Hapiness var of Margaret : -1
+ ------------------------------------------------------------- 
+Episode 5
+ --Mary met with Margaret and does not like it
+ --Mary and Margaret fought
+ --Mary threw Margaret on the ground
+ --Bill is sad for Margaret
+ --Bob is sad for Margaret
+ --Margaret has been killed in the fight
+ --Hapiness var of Mary :  1
+ --Bill met with Brad and does not like it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 6
+ --*** An earthquake has hit the city ***
+ --Mary had his house destroyed in the earthquake
+ --Margaret had his house destroyed in the earthquake
+ ------------------------------------------------------------- 
+Episode 7
+ --Mary met with Brad and is happy about it
+ --Mary and Brad made business and made 29 percent out of it
+ --Hapiness var of Mary :  4
+ --Melany met with Bill and does not like it
+ --Hapiness var of Melany : -1
+ ------------------------------------------------------------- 
+Episode 8
+ --Bill met with Mary and is fine but does not really care about other people
+ --Bill and Mary made business and made -7 percent out of it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 9
+ --Bill met with Brad and is fine but does not really care about other people
+ --Hapiness var of Bill :  1
+ ------------------------------------------------------------- 
+Episode 10
+ --Bill met with Mary and is fine but does not really care about other people
+ --Bill and Mary made business and made -9 percent out of it
+ --Hapiness var of Bill : -1
+ --Melany met with Mary and is happy about it
+ --Melany and Mary made business and made -2 percent out of it
+ --Hapiness var of Melany :  0
+ --=== Mary suicided out of sadness ===
+ --Bill is sad after Mary suicide
+ --Bob is sad after Mary suicide
+ --Brad is sad after Mary suicide
+ --Melany is sad after Mary suicide
+ ------------------------------------------------------------- 
+Episode 11
+ --=== Melany suicided out of sadness ===
+ --Bob is sad after Melany suicide
+ --Brad is sad after Melany suicide
+ ------------------------------------------------------------- 
+Episode 12
+ ------------------------------------------------------------- 
+Episode 13
+ --Bob met with Brad and is thrilled about it
+ --Bob and Brad made business and made -19 percent out of it
+ --Hapiness var of Bob :  1
+ ------------------------------------------------------------- 
+Episode 14
+ ------------------------------------------------------------- 
+Episode 15
+ --Bill met with Brad and is fine but does not really care about other people
+ --Bill and Brad made business and made -8 percent out of it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 16
+ --Brad met with Bill and is fine but does not really care about other people
+ --Brad and Bill made business and made -22 percent out of it
+ --Hapiness var of Brad : -1
+ ------------------------------------------------------------- 
+Episode 17
+ ------------------------------------------------------------- 
+Episode 18
+ ------------------------------------------------------------- 
+Episode 19
+ ------------------------------------------------------------- 
+Episode 20
+ ------------------------------------------------------------- 
+Episode 21
+ --Brad met with Bob and is fine but does not really care about other people
+ --Brad and Bob made business and made -39 percent out of it
+ --Hapiness var of Brad : -1
+ ------------------------------------------------------------- 
+Episode 22
+ --Bob met with Brad and is thrilled about it
+ --Bob and Brad made business and made -13 percent out of it
+ --Hapiness var of Bob :  1
+ ------------------------------------------------------------- 
+Episode 23
+ ------------------------------------------------------------- 
+Episode 24
+ ------------------------------------------------------------- 
+Episode 25
+ ------------------------------------------------------------- 
+Episode 26
+ --=== Bob suicided out of sadness ===
+ --Bill is sad after Bob suicide
+ --Brad is sad after Bob suicide
+ ------------------------------------------------------------- 
+Episode 27
+ --=== Brad suicided out of sadness ===
+ --Bill is sad after Brad suicide
+ ------------------------------------------------------------- 
+Episode 28
+ --=== Bill suicided out of sadness ===
+ ------------------------------------------------------------- 
+Episode 29
+ ------------------------------------------------------------- 
+Episode 30
+ ------------------------------------------------------------- 
+Episode 31
+ ------------------------------------------------------------- 
+Episode 32
+ ------------------------------------------------------------- 
+Episode 33
+ ------------------------------------------------------------- 
+Episode 34
+ ------------------------------------------------------------- 
+Episode 35
+ ------------------------------------------------------------- 
+Episode 36
+ ------------------------------------------------------------- 
+Episode 37
+ ------------------------------------------------------------- 
+Episode 38
+ ------------------------------------------------------------- 
+Episode 39
+ ------------------------------------------------------------- 
+Episode 40
+ ------------------------------------------------------------- 
+Episode 41
+ ------------------------------------------------------------- 
+Episode 42
+ ------------------------------------------------------------- 
+Episode 43
+ ------------------------------------------------------------- 
+Episode 44
+ ------------------------------------------------------------- 
+Episode 45
+ ------------------------------------------------------------- 
+Episode 46
+ ------------------------------------------------------------- 
+Episode 47
+ ------------------------------------------------------------- 
+Episode 48
+ ------------------------------------------------------------- 
+Episode 49
+ ------------------------------------------------------------- 
+Episode 50
+ ------------------------------------------------------------- 
+Episode 51
+ ------------------------------------------------------------- 
+Episode 52
+ ------------------------------------------------------------- 
+Episode 53
+ ------------------------------------------------------------- 
+Episode 54
+ ------------------------------------------------------------- 
+Episode 55
+ ------------------------------------------------------------- 
+Episode 56
+ ------------------------------------------------------------- 
+Episode 57
+ ------------------------------------------------------------- 
+Episode 58
+ ------------------------------------------------------------- 
+Episode 59
+ ------------------------------------------------------------- 
+Episode 60
+ ------------------------------------------------------------- 
+Episode 61
+ ------------------------------------------------------------- 
+Episode 62
+ ------------------------------------------------------------- 
+Episode 63
+ ------------------------------------------------------------- 
+Episode 64
+ ------------------------------------------------------------- 
+Episode 65
+ ------------------------------------------------------------- 
+Episode 66
+ ------------------------------------------------------------- 
+Episode 67
+ ------------------------------------------------------------- 
+Episode 68
+ ------------------------------------------------------------- 
+Episode 69
+ ------------------------------------------------------------- 
+Episode 70
+ ------------------------------------------------------------- 
+Episode 71
+ ------------------------------------------------------------- 
+Episode 72
+ ------------------------------------------------------------- 
+Episode 73
+ ------------------------------------------------------------- 
+Episode 74
+ ------------------------------------------------------------- 
+Episode 75
+ ------------------------------------------------------------- 
+Episode 76
+ ------------------------------------------------------------- 
+Episode 77
+ ------------------------------------------------------------- 
+Episode 78
+ ------------------------------------------------------------- 
+Episode 79
+ ------------------------------------------------------------- 
+Episode 80
+ ------------------------------------------------------------- 
+Episode 81
+ ------------------------------------------------------------- 
+Episode 82
+ ------------------------------------------------------------- 
+Episode 83
+ ------------------------------------------------------------- 
+Episode 84
+ ------------------------------------------------------------- 
+Episode 85
+ ------------------------------------------------------------- 
+Episode 86
+ ------------------------------------------------------------- 
+Episode 87
+ ------------------------------------------------------------- 
+Episode 88
+ ------------------------------------------------------------- 
+Episode 89
+ ------------------------------------------------------------- 
+Episode 90
+ ------------------------------------------------------------- 
+Episode 91
+ ------------------------------------------------------------- 
+Episode 92
+ ------------------------------------------------------------- 
+Episode 93
+ ------------------------------------------------------------- 
+Episode 94
+ ------------------------------------------------------------- 
+Episode 95
+ ------------------------------------------------------------- 
+Episode 96
+ ------------------------------------------------------------- 
+Episode 97
+ ------------------------------------------------------------- 
+Episode 98
+ ------------------------------------------------------------- 
+Episode 99
+ ------------------------------------------------------------- 
+Episode 100
+ ------------------------------------------------------------- 

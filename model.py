@@ -10,14 +10,26 @@ import scipy.stats as stats
 import math
 import datetime
 from tqdm import tqdm
+import sys
+
+path=r'C:\Users\rapha\Desktop\Markov Chains & Agent Based Systems\Project\example'
+sys.path.insert(1, path)
+
+from mesa import Model, Agent
+from mesa.time import RandomActivation
+from mesa.space import SingleGrid
+from mesa.datacollection import DataCollector
+
+#%% Parameters
+
 
 names=["Bill","Bob","Brad","Mary","Margaret","Melany"]
 
-violence_list=[10,60,40,20,70,50]
-business_risk=[0.2,0.1,0.4,0.2,0.5,0.1]
-gender_list=[1,1,1,0,0,0]
-happiness_list=[0,0,0,0,0,0]
-sociability_list=[40,80,30,50,20,60]
+# violence_list=[10,60,40,20,70,50]
+# business_risk=[0.2,0.1,0.4,0.2,0.5,0.1]
+# gender_list=[1,1,1,0,0,0]
+# happiness_list=[0,0,0,0,0,0]
+# sociability_list=[40,80,30,50,20,60]
 
 #violence
 violent_relation_thres=0.4
@@ -42,7 +54,6 @@ high_violence_thres=60
 suicide_thres_happiness=-10
 suicide_thres_money=3
 suicide_random_thres=0.25
-
 
 #%% Create relations matrix
 
@@ -111,16 +122,6 @@ def make_money_list(names,mode="pre_defined"):
 
 #%% Model
 
-path=r'C:\Users\rapha\Desktop\Markov Chains & Agent Based Systems\Project\example'
-import sys
-sys.path.insert(1, path)
-
-from mesa import Model, Agent
-from mesa.time import RandomActivation
-from mesa.space import SingleGrid
-from mesa.datacollection import DataCollector
-
-
 class HappyFolksAgent(Agent):
     """
     Happy Folks agent
@@ -141,10 +142,10 @@ class HappyFolksAgent(Agent):
         self.agent_name=names[self.agent_id]
         self.type = agent_type
         self.happiness = 0
-        self.violence = violence_list[self.agent_id]
-        self.gender = gender_list[self.agent_id]
-        self.business_risk = business_risk[self.agent_id]
-        self.sociability = sociability_list[self.agent_id]
+        self.violence = self.model.violence_list[self.agent_id]
+        self.gender = self.model.gender_list[self.agent_id]
+        self.business_risk = self.model.business_risk[self.agent_id]
+        self.sociability = self.model.sociability_list[self.agent_id]
         self.money = self.model.money_list[self.agent_id]
         self.dead=0
         
@@ -274,7 +275,6 @@ class HappyFolksAgent(Agent):
                                             self.model.relations_matrix[:,neighbor.agent_id]=np.nan 
                                             
                                             neighbor.money=-1
-                                            self.model.money_list[neighbor.agent_id]=-1
                             
                                     else:
                                         happiness_var+=-3
@@ -298,8 +298,7 @@ class HappyFolksAgent(Agent):
                                             self.model.relations_matrix[self.agent_id,:]=np.nan
                                             self.model.relations_matrix[:,self.agent_id]=np.nan 
                                             
-                                            self.money+=-1
-                                            self.model.money_list[self.agent_id]=-1
+                                            self.money=-1
                                                 
                         ##Business common
                         if (relation_quality>business_coop_thres)&(random.random()<business_coop_randm_thres):
@@ -394,7 +393,6 @@ class HappyFolksAgent(Agent):
                                     self.model.relations_matrix[:,obj.agent_id]=np.nan 
                                     
                                     obj.money=-1
-                                    self.model.money_list[obj.agent_id]=-1
                                 
                                 elif random.random()<0.5:
                                     self.add_to_latest_news("They ruined %s"%(obj.agent_name))
@@ -473,7 +471,6 @@ class HappyFolksAgent(Agent):
                             self.model.relations_matrix[:,self.agent_id]=np.nan 
                             
                             self.money=-1
-                            self.model.money_list[self.agent_id]=-1
                             
                     else:
                         if (random.random()<suicide_random_thres/2):
@@ -511,7 +508,6 @@ class HappyFolksAgent(Agent):
                             self.model.relations_matrix[:,self.agent_id]=np.nan 
                             
                             self.money=-1
-                            self.model.money_list[self.agent_id]=-1
 
                             partner.dead=1                       
                             
@@ -521,7 +517,6 @@ class HappyFolksAgent(Agent):
                             self.model.relations_matrix[:,partner.agent_id]=np.nan 
                                             
                             partner.money=-1
-                            self.model.money_list[partner.agent_id]=-1
                                         
             
             self.model.grid.move_to_empty(self)
@@ -530,9 +525,9 @@ class HappyFolksAgent(Agent):
             if self.model.verbose>=1:
                 print("%s is now dead"%(self.agent_name))
                 
-            self.happiness=0
-            self.model.happiness_list[self.agent_id]=0
-            self.model.money_list[self.agent_id]=0
+            self.happiness=np.nan
+            self.model.happiness_list[self.agent_id]=np.nan
+            self.model.money_list[self.agent_id]=np.nan
 
 
 
@@ -544,10 +539,17 @@ class HappyFolks(Model):
     def __init__(self, height=10, width=10, n_agent=len(names),plotmat=False,plotmoney=False,
                  plotstep=1,matrix_init="pre_defined",money_init="pre_defined",verbose=1,
                  relation_like_happiness_var=1,relation_dislike_happiness_var=-1,external_disaster=False,
-                 earthquake_proba=0.01,financialcrisis_proba=0.02):
+                 earthquake_proba=0.03,financialcrisis_proba=0.04,violence_list=[10,60,40,20,70,50],
+                 business_risk=[0.2,0.1,0.4,0.2,0.5,0.1],gender_list=[1,1,1,0,0,0],happiness_list=[0,0,0,0,0,0],
+                 sociability_list=[40,80,30,50,20,60]):
         
         """"""
                 
+        self.violence_list=violence_list
+        self.business_risk=business_risk
+        self.gender_list=gender_list
+        self.happiness_list=happiness_list
+        self.sociability_list=sociability_list
         self.external_disaster=external_disaster
         self.earthquake_proba=earthquake_proba
         self.financialcrisis_proba=financialcrisis_proba
@@ -653,202 +655,8 @@ class HappyFolks(Model):
         return(self.relations_matrix,self.couples_matrix,self.money_list,self.happiness_list,self.alive_agents,self.latest_news)
        
 
-#%%
-
-#Stock lists
-relations_matrix_stock=[]
-couples_matrix_stock=[]
-money_list_stock=[]
-happiness_list_stock=[]
-n_alive_agents=[]
-scenario=[]
-
-#init
-money_init="pre_defined"
-matrix_init="pre_defined"
-nsteps=100
-
-model = HappyFolks(plotmat=False,plotmoney=False,plotstep=20,
-                   matrix_init=matrix_init,money_init=money_init,verbose=0,
-                   n_agent=len(names),external_disaster=False)
-    
-for i in range(nsteps):
-    print("Step",i)
-    relations,couples,money,happiness,alive,latest_news=model.step()
-    
-    relations_matrix_stock.append(relations.copy())
-    couples_matrix_stock.append(couples.copy())
-    money_list_stock.append(money[:])
-    happiness_list_stock.append(happiness[:])
-    n_alive_agents.append(alive)
-    scenario.append(latest_news)
-
 #%% MultiRun the model for various violence lists
 
-#init
-money_init="pre_defined"
-matrix_init="pre_defined"
-
-def test_various_violence(list_of_list_violence,n_iter=100,nsteps_per_iter=20):
-    levels_results_happiness={}
-    levels_results_money={}
-    levels_results_couples={}
-    levels_results_nagents={}
-    levels_resutls_scenario={}
-    global violence_list
-    
-    for violence_list in list_of_list_violence:
-        print("Testing violence list %s"%(str(violence_list)))
-        
-        level_result_happiness=[]
-        level_result_money=[]
-        level_result_couples=[]
-        level_result_nagents=[]
-        level_result_scenario=[]
-        for i in tqdm(range(n_iter)):
-            relations_matrix_stock=[]            
-            couples_matrix_stock=[]
-            money_list_stock=[]
-            happiness_list_stock=[]
-            n_alive_agents=[]
-            scenario=[]
-            
-            
-            model = HappyFolks(plotmat=False,plotmoney=False,plotstep=20,
-                               matrix_init=matrix_init,money_init=money_init,verbose=0,
-                               n_agent=len(names),external_disaster=False)
-    
-            for i in range(nsteps_per_iter):
-                #print("Step",i)
-                relations,couples,money,happiness,alive,latest_news=model.step()
-                
-                relations_matrix_stock.append(relations.copy())
-                couples_matrix_stock.append(couples.copy())
-                money_list_stock.append(money[:])
-                happiness_list_stock.append(happiness[:])
-                n_alive_agents.append(alive)
-                scenario.append(latest_news)
-            
-            level_result_happiness.append(happiness_list_stock.copy())
-            level_result_money.append(money_list_stock.copy())
-            level_result_couples.append(list(map(lambda a: a[np.isnan(a)==False].sum()/2,couples_matrix_stock)).copy())
-            level_result_nagents.append(n_alive_agents.copy())
-            level_result_scenario.append(scenario.copy())
-            
-        levels_results_happiness[str(violence_list)]=level_result_happiness.copy()
-        levels_results_money[str(violence_list)]=level_result_money.copy()
-        levels_results_couples[str(violence_list)]=level_result_couples.copy()
-        levels_results_nagents[str(violence_list)]=level_result_nagents.copy()
-        levels_resutls_scenario[str(violence_list)]=level_result_scenario.copy()
-        
-    return(levels_results_happiness,levels_results_money,levels_results_couples,levels_results_nagents)
-
-happiness_dic,money_dic,couples_dic,nagents_dic=test_various_violence([[10,60,40,20,70,50],[10,20,10,10,10,20],[70,90,40,50,70,80],[90,10,20,20,30,20]])
-
-plt.figure(figsize=(10,10))
-for key in list(happiness_dic.keys()):
-    z=np.array(happiness_dic[key][:]).sum(axis=2)
-    t=np.array(nagents_dic[key][:])
-    u=(z/t).mean(axis=0)
-    plt.plot(u,label=key)
-
-plt.legend()
-plt.title('Average happiness of agents (alive), 5 iter for various levels of violence_list')
-
-plt.figure(figsize=(10,10))
-for key in list(money_dic.keys()):
-    z=np.array(money_dic[key][:]).sum(axis=2)
-    t=np.array(nagents_dic[key][:])
-    u=(z/t).mean(axis=0)
-    plt.plot(u,label=key)
-
-plt.legend()
-plt.title('Average money of agents (alive), 5 iter for various levels of violence_list')
 
 
-plt.figure(figsize=(10,10))
-for key in list(couples_dic.keys()):
-    z=np.array(couples_dic[key][:]).mean(axis=0)
-    plt.plot(z,label=key)
-
-plt.legend()
-plt.title('Average number of couples, 5 iter for various levels of violence_list')
-    
-
-plt.figure(figsize=(10,10))
-for key in list(nagents_dic.keys()):
-    z=np.array(nagents_dic[key][:]).mean(axis=0)
-    plt.plot(z,label=key)
-
-plt.legend()
-plt.title('Average number of alive agents, 5 iter for various levels of violence_list')
-    
-
-#%% Plot figures
-plt.figure(figsize=(10,10))
-labels=names
-for y_arr, label in zip(np.transpose(np.array(money_list_stock)), labels):
-    plt.plot(range(nsteps), y_arr, label=label)
-if nsteps<=20:   
-    plt.xticks(range(nsteps),range(1,nsteps+1))   
-    plt.vlines(range(nsteps),ymin=np.array(money_list_stock).min(),ymax=np.array(money_list_stock).max(),colors="black",linestyles="dashed")
-plt.legend()
-plt.show()
-
-plt.figure(figsize=(10,10))
-labels=names
-for y_arr, label in zip(np.transpose(np.array(happiness_list_stock)), labels):
-    plt.plot(range(nsteps), y_arr, label=label)
-if nsteps<=20:   
-    plt.xticks(range(nsteps),range(1,nsteps+1))
-    plt.vlines(range(nsteps),ymin=np.array(happiness_list_stock).min(),ymax=np.array(happiness_list_stock).max(),colors="black",linestyles="dashed")
-plt.legend()
-plt.show()
-
-
-plt.figure(figsize=(10,10))
-fig,ax = plt.subplots(figsize=(10,10))
-ax.plot(n_alive_agents,color="red")
-ax.set_xlabel("step",fontsize=14)
-ax.set_ylabel("number of agents alive",color="red")
-
-if nsteps<=20:
-    ax.set_xticks(range(nsteps))
-    ax.set_xticklabels(range(1,nsteps+1))
-#ax2=ax.twinx()
-#ax2.plot(np.array(happiness_list_stock).sum(axis=1),color="blue")
-#ax2.set_ylabel("total happiness",color="blue")
-ax3=ax.twinx()
-ax3.plot(np.array(happiness_list_stock).sum(axis=1)/n_alive_agents,color="orange")
-ax3.set_ylabel("average happiness",color="orange")
-
-#%% Write the scenario
-path=r"C:\Users\rapha\Desktop\Markov Chains & Agent Based Systems\Project\example_happyfolks\scenarios"
-
-now=datetime.datetime.now().strftime("%d_%b_%Y_%H_%M_%S")
-
-with open(path+'\\scenario_'+now+'.txt', 'w') as f:
-    f.write("Scenario - Telenabehem\n")
-    f.write(datetime.datetime.now().strftime("%d-%b-%Y (%H:%M)"))
-    f.write("\n")
-    f.write('\n ------------------------------------------------------------- \n')
-    for i,name in enumerate(names):
-        f.write("------ Name %s ------ \n"%(name))
-        f.write("Violence level : %s \n"%(violence_list[i]))
-        f.write("Risk taker (business) : %s \n"%(business_risk[i]))
-        f.write("Sociability : %s \n"%(sociability_list[i]))
-        if money_init=="pre_defined":
-            f.write("Money at start : %s \n"%(make_money_list(names)[i]))
-            
-        if matrix_init=="pre_defined":
-            matrix=make_matrix_relations(names,mode="pre_defined")
-            matrix_line=matrix[i,:]
-            for j in range(len(matrix_line)):
-                if (j!=i):
-                    f.write(" Relation with %s : %s \n"%(names[int(j)],matrix_line[int(j)]))
-        
-    f.write('\n ------------------------------------------------------------- \n')    
-    
-    for line in scenario:
-        f.write(line)
-        f.write('\n ------------------------------------------------------------- \n')
+#%% Single run

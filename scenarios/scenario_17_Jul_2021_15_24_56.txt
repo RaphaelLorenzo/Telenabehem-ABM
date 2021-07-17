@@ -1,0 +1,707 @@
+Scenario - Telenabehem
+17-Jul-2021 (15:24)
+
+ ------------------------------------------------------------- 
+------ Name Bill ------ 
+Violence level : 10 
+Risk taker (business) : 0.2 
+Sociability : 40 
+Money at start : 100 
+ Relation with Bob : 0.9 
+ Relation with Brad : 0.4 
+ Relation with Mary : 0.5 
+ Relation with Margaret : 0.8 
+ Relation with Melany : 0.3 
+------ Name Bob ------ 
+Violence level : 60 
+Risk taker (business) : 0.1 
+Sociability : 80 
+Money at start : 100 
+ Relation with Bill : 0.9 
+ Relation with Brad : 0.7 
+ Relation with Mary : 0.5 
+ Relation with Margaret : 0.8 
+ Relation with Melany : 0.7 
+------ Name Brad ------ 
+Violence level : 40 
+Risk taker (business) : 0.4 
+Sociability : 30 
+Money at start : 100 
+ Relation with Bill : 0.4 
+ Relation with Bob : 0.7 
+ Relation with Mary : 0.8 
+ Relation with Margaret : 0.3 
+ Relation with Melany : 0.7 
+------ Name Mary ------ 
+Violence level : 20 
+Risk taker (business) : 0.2 
+Sociability : 50 
+Money at start : 100 
+ Relation with Bill : 0.5 
+ Relation with Bob : 0.5 
+ Relation with Brad : 0.8 
+ Relation with Margaret : 0.3 
+ Relation with Melany : 0.9 
+------ Name Margaret ------ 
+Violence level : 70 
+Risk taker (business) : 0.5 
+Sociability : 20 
+Money at start : 100 
+ Relation with Bill : 0.8 
+ Relation with Bob : 0.8 
+ Relation with Brad : 0.3 
+ Relation with Mary : 0.3 
+ Relation with Melany : 0.4 
+------ Name Melany ------ 
+Violence level : 50 
+Risk taker (business) : 0.1 
+Sociability : 60 
+Money at start : 100 
+ Relation with Bill : 0.3 
+ Relation with Bob : 0.7 
+ Relation with Brad : 0.7 
+ Relation with Mary : 0.9 
+ Relation with Margaret : 0.4 
+
+ ------------------------------------------------------------- 
+Episode 1
+ --Bob met with Mary and does not like it
+ --Hapiness var of Bob : -1
+ --Margaret met with Melany and does not like it
+ --Hapiness var of Margaret : -1
+ --Bill met with Mary and does not like it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 2
+ --Bob met with Bill and is thrilled about it
+ --Bob and Bill made business and made 34 percent out of it
+ --Hapiness var of Bob :  5
+ --Mary met with Bill and is happy about it
+ --Hapiness var of Mary :  2
+ ------------------------------------------------------------- 
+Episode 3
+ --Mary met with Bob and is happy about it
+ --Mary and Bob made business and made  2 percent out of it
+ --Hapiness var of Mary :  4
+ --Bob met with Margaret and is thrilled about it
+ --Bob and Margaret made business and made -18 percent out of it
+ --Hapiness var of Bob :  1
+ ------------------------------------------------------------- 
+Episode 4
+ --Margaret met with Melany and does not like it
+ --Hapiness var of Margaret : -1
+ --Bob met with Bill and is thrilled about it
+ --Bob and Bill made business and made -7 percent out of it
+ --Hapiness var of Bob :  1
+ --Brad met with Mary and is fine but does not really care about other people
+ --Brad and Mary made business and made -44 percent out of it
+ --Hapiness var of Brad : -1
+ ------------------------------------------------------------- 
+Episode 5
+ --Bill met with Mary and does not like it
+ --Hapiness var of Bill : -1
+ --Melany met with Margaret and is happy about it
+ --Hapiness var of Melany :  2
+ ------------------------------------------------------------- 
+Episode 6
+ --Bob met with Mary and is thrilled about it
+ --Bob and Mary made business and made 15 percent out of it
+ --I love you my dear Mary, yours for ever Bob
+ --Hapiness var of Bob :  8
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made 12 percent out of it
+ --Hapiness var of Bill :  3
+ --Margaret met with Brad and does not like it
+ --Margaret and Brad fought
+ --Margaret threw Brad on the ground
+ --Bob is sad for Brad
+ --Mary is sad for Brad
+ --Melany is sad for Brad
+ --Brad has been killed in the fight
+ --Hapiness var of Margaret :  1
+ ------------------------------------------------------------- 
+Episode 7
+ --Mary met with Margaret and does not like it
+ --Hapiness var of Mary : -1
+ ------------------------------------------------------------- 
+Episode 8
+ --Melany met with Mary and is happy about it
+ --Melany and Mary made business and made  8 percent out of it
+ --Hapiness var of Melany :  4
+ --Margaret met with Mary and does not like it
+ --Hapiness var of Margaret : -1
+ ------------------------------------------------------------- 
+Episode 9
+ --Melany met with Mary and is happy about it
+ --Melany and Mary made business and made 12 percent out of it
+ --Hapiness var of Melany :  4
+ ------------------------------------------------------------- 
+Episode 10
+ --Bob met with Mary and is thrilled about it
+ --Bob and Mary made business and made -6 percent out of it
+ --Glad to see you my beloved Mary, yours lovely Bob
+ --Hapiness var of Bob :  2
+ --Margaret met with Bill and is fine but does not really care about other people
+ --Margaret and Bill made business and made 10 percent out of it
+ --I love you my dear Bill, yours for ever Margaret
+ --Hapiness var of Margaret :  6
+ ------------------------------------------------------------- 
+Episode 11
+ --Mary met with Bob and is happy about it
+ --Mary and Bob made business and made -23 percent out of it
+ --Glad to see you my beloved Bob, yours lovely Mary
+ --Hapiness var of Mary :  1
+ --Melany met with Bob and is happy about it
+ --Melany and Bob made business and made 12 percent out of it
+ --Hapiness var of Melany :  4
+ ------------------------------------------------------------- 
+Episode 12
+ ------------------------------------------------------------- 
+Episode 13
+ --Margaret met with Bob and is fine but does not really care about other people
+ --Margaret and Bob made business and made 60 percent out of it
+ --Hapiness var of Margaret :  3
+ ------------------------------------------------------------- 
+Episode 14
+ --Bill met with Melany and does not like it
+ --Hapiness var of Bill : -1
+ --Margaret met with Melany and is fine but does not really care about other people
+ --Hapiness var of Margaret :  1
+ --Mary met with Melany and is happy about it
+ --Mary and Melany made business and made  8 percent out of it
+ --Hapiness var of Mary :  4
+ ------------------------------------------------------------- 
+Episode 15
+ --Mary met with Bill and is happy about it
+ --Hapiness var of Mary :  2
+ --Bill met with Mary and does not like it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 16
+ --Melany met with Bill and does not like it
+ --Hapiness var of Melany : -1
+ --Margaret met with Melany and does not like it
+ --Hapiness var of Margaret : -1
+ ------------------------------------------------------------- 
+Episode 17
+ --Bob met with Mary and is thrilled about it
+ --Bob and Mary made business and made -15 percent out of it
+ --Glad to see you my beloved Mary, yours lovely Bob
+ --Hapiness var of Bob :  2
+ --Mary met with Bob and is happy about it
+ --Mary and Bob made business and made -17 percent out of it
+ --Glad to see you my beloved Bob, yours lovely Mary
+ --Hapiness var of Mary :  1
+ ------------------------------------------------------------- 
+Episode 18
+ --Mary met with Bill and does not like it
+ --Hapiness var of Mary : -1
+ --Melany met with Margaret and does not like it
+ --Hapiness var of Melany : -1
+ ------------------------------------------------------------- 
+Episode 19
+ --Bill met with Melany and does not like it
+ --Hapiness var of Bill : -1
+ --Melany met with Mary and is happy about it
+ --Melany and Mary made business and made -21 percent out of it
+ --Hapiness var of Melany :  0
+ --Margaret met with Bob and is fine but does not really care about other people
+ --Margaret and Bob made business and made -31 percent out of it
+ --I love you my dear Bob, yours for ever Margaret
+ --Bill is mad at Margaret for breaking their couple apart
+ --Mary is mad at Bob for breaking their couple apart
+ --Hapiness var of Margaret :  2
+ ------------------------------------------------------------- 
+Episode 20
+ --Bill met with Mary and is fine but does not really care about other people
+ --Bill and Mary made business and made -7 percent out of it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 21
+ ------------------------------------------------------------- 
+Episode 22
+ ------------------------------------------------------------- 
+Episode 23
+ ------------------------------------------------------------- 
+Episode 24
+ --Margaret met with Bill and is fine but does not really care about other people
+ --Hapiness var of Margaret :  1
+ --Bill met with Mary and is fine but does not really care about other people
+ --Bill and Mary made business and made -1 percent out of it
+ --Hapiness var of Bill : -1
+ --Melany met with Bill and does not like it
+ --Hapiness var of Melany : -1
+ ------------------------------------------------------------- 
+Episode 25
+ --Bob met with Mary and is thrilled about it
+ --Hapiness var of Bob :  3
+ --Melany met with Mary and is happy about it
+ --Melany and Mary made business and made 27 percent out of it
+ --Hapiness var of Melany :  4
+ ------------------------------------------------------------- 
+Episode 26
+ --Melany met with Margaret and is happy about it
+ --Hapiness var of Melany :  2
+ --Bob met with Bill and is thrilled about it
+ --Bob and Bill made business and made 12 percent out of it
+ --Hapiness var of Bob :  5
+ --Mary met with Bill and is happy about it
+ --Mary and Bill made business and made 17 percent out of it
+ --I love you my dear Bill, yours for ever Mary
+ --Hapiness var of Mary :  7
+ ------------------------------------------------------------- 
+Episode 27
+ --Margaret met with Mary and does not like it
+ --Hapiness var of Margaret : -1
+ ------------------------------------------------------------- 
+Episode 28
+ --Bob met with Melany and is thrilled about it
+ --Bob and Melany made business and made  7 percent out of it
+ --I love you my dear Melany, yours for ever Bob
+ --Margaret is mad at Bob for breaking their couple apart
+ --Hapiness var of Bob :  8
+ ------------------------------------------------------------- 
+Episode 29
+ --Melany met with Bob and is happy about it
+ --Melany and Bob made business and made -10 percent out of it
+ --Glad to see you my beloved Bob, yours lovely Melany
+ --Hapiness var of Melany :  1
+ --Bob met with Melany and is thrilled about it
+ --Bob and Melany made business and made  3 percent out of it
+ --Glad to see you my beloved Melany, yours lovely Bob
+ --Hapiness var of Bob :  6
+ ------------------------------------------------------------- 
+Episode 30
+ --Mary met with Bob and is happy about it
+ --Mary and Bob made business and made -2 percent out of it
+ --Hapiness var of Mary :  0
+ --Bill met with Mary and is fine but does not really care about other people
+ --Bill and Mary made business and made 12 percent out of it
+ --Glad to see you my beloved Mary, yours lovely Bill
+ --Hapiness var of Bill :  4
+ --Melany met with Margaret and is happy about it
+ --Melany and Margaret made business and made 25 percent out of it
+ --Hapiness var of Melany :  4
+ ------------------------------------------------------------- 
+Episode 31
+ --Melany met with Mary and is happy about it
+ --Melany and Mary made business and made  3 percent out of it
+ --Hapiness var of Melany :  4
+ ------------------------------------------------------------- 
+Episode 32
+ --Bill met with Bob and is fine but does not really care about other people
+ --Bill and Bob made business and made -10 percent out of it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 33
+ --Melany met with Bill and does not like it
+ --Hapiness var of Melany : -1
+ --Margaret met with Melany and is fine but does not really care about other people
+ --Margaret and Melany made business and made -10 percent out of it
+ --Hapiness var of Margaret : -1
+ ------------------------------------------------------------- 
+Episode 34
+ --Bob met with Bill and is thrilled about it
+ --Bob and Bill made business and made 11 percent out of it
+ --Hapiness var of Bob :  5
+ --Margaret met with Melany and is fine but does not really care about other people
+ --Margaret and Melany made business and made 11 percent out of it
+ --Hapiness var of Margaret :  3
+ ------------------------------------------------------------- 
+Episode 35
+ --Melany met with Bill and does not like it
+ --Hapiness var of Melany : -1
+ ------------------------------------------------------------- 
+Episode 36
+ --Bob met with Margaret and is thrilled about it
+ --Hapiness var of Bob :  3
+ --Bill met with Bob and is fine but does not really care about other people
+ --Bill and Bob made business and made  5 percent out of it
+ --Hapiness var of Bill :  3
+ ------------------------------------------------------------- 
+Episode 37
+ --Melany met with Margaret and is happy about it
+ --Melany and Margaret made business and made 16 percent out of it
+ --Hapiness var of Melany :  4
+ --Bob met with Melany and is thrilled about it
+ --Bob and Melany made business and made  8 percent out of it
+ --Glad to see you my beloved Melany, yours lovely Bob
+ --Hapiness var of Bob :  6
+ ------------------------------------------------------------- 
+Episode 38
+ --Margaret met with Melany and is fine but does not really care about other people
+ --Margaret and Melany made business and made -2 percent out of it
+ --Hapiness var of Margaret : -1
+ --Mary met with Bob and is happy about it
+ --Mary and Bob made business and made  1 percent out of it
+ --Hapiness var of Mary :  4
+ ------------------------------------------------------------- 
+Episode 39
+ --Bill met with Mary and is fine but does not really care about other people
+ --Bill and Mary made business and made 17 percent out of it
+ --Glad to see you my beloved Mary, yours lovely Bill
+ --Hapiness var of Bill :  4
+ --Mary met with Bill and is happy about it
+ --Mary and Bill made business and made -45 percent out of it
+ --Glad to see you my beloved Bill, yours lovely Mary
+ --Hapiness var of Mary :  1
+ ------------------------------------------------------------- 
+Episode 40
+ --Bob met with Bill and is thrilled about it
+ --Bob and Bill made business and made -20 percent out of it
+ --Hapiness var of Bob :  1
+ --Margaret met with Mary and does not like it
+ --Hapiness var of Margaret : -1
+ --Mary met with Bill and is happy about it
+ --Mary and Bill made business and made 16 percent out of it
+ --Glad to see you my beloved Bill, yours lovely Mary
+ --Hapiness var of Mary :  5
+ ------------------------------------------------------------- 
+Episode 41
+ ------------------------------------------------------------- 
+Episode 42
+ ------------------------------------------------------------- 
+Episode 43
+ ------------------------------------------------------------- 
+Episode 44
+ ------------------------------------------------------------- 
+Episode 45
+ --Melany met with Bill and does not like it
+ --Hapiness var of Melany : -1
+ ------------------------------------------------------------- 
+Episode 46
+ ------------------------------------------------------------- 
+Episode 47
+ --Mary met with Margaret and is happy about it
+ --Hapiness var of Mary :  2
+ ------------------------------------------------------------- 
+Episode 48
+ --Mary met with Bill and is happy about it
+ --Mary and Bill made business and made 15 percent out of it
+ --Glad to see you my beloved Bill, yours lovely Mary
+ --Hapiness var of Mary :  5
+ ------------------------------------------------------------- 
+Episode 49
+ --Mary met with Bob and is happy about it
+ --Mary and Bob made business and made 22 percent out of it
+ --Hapiness var of Mary :  4
+ ------------------------------------------------------------- 
+Episode 50
+ --Mary met with Melany and is happy about it
+ --Mary and Melany made business and made  4 percent out of it
+ --Hapiness var of Mary :  4
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made -47 percent out of it
+ --Hapiness var of Bill : -1
+ ------------------------------------------------------------- 
+Episode 51
+ --Melany met with Margaret and is happy about it
+ --Melany and Margaret made business and made 12 percent out of it
+ --Hapiness var of Melany :  4
+ --Margaret met with Bill and is fine but does not really care about other people
+ --Margaret and Bill made business and made 39 percent out of it
+ --Hapiness var of Margaret :  3
+ ------------------------------------------------------------- 
+Episode 52
+ --Melany met with Mary and is happy about it
+ --Melany and Mary made business and made 12 percent out of it
+ --Hapiness var of Melany :  4
+ --Bill met with Melany and is fine but does not really care about other people
+ --Bill and Melany made business and made -2 percent out of it
+ --Hapiness var of Bill : -1
+ --Margaret met with Mary and does not like it
+ --Hapiness var of Margaret : -1
+ ------------------------------------------------------------- 
+Episode 53
+ --Bill met with Mary and is fine but does not really care about other people
+ --Bill and Mary made business and made 27 percent out of it
+ --Glad to see you my beloved Mary, yours lovely Bill
+ --Hapiness var of Bill :  4
+ --Mary met with Bill and is happy about it
+ --Mary and Bill made business and made -89 percent out of it
+ --Glad to see you my beloved Bill, yours lovely Mary
+ --Hapiness var of Mary :  1
+ --Margaret met with Melany and is fine but does not really care about other people
+ --Margaret and Melany made business and made 17 percent out of it
+ --Hapiness var of Margaret :  3
+ --Bob met with Bill and is thrilled about it
+ --Bob and Bill made business and made 15 percent out of it
+ --Hapiness var of Bob :  5
+ ------------------------------------------------------------- 
+Episode 54
+ ------------------------------------------------------------- 
+Episode 55
+ --Margaret met with Bill and is fine but does not really care about other people
+ --Margaret and Bill made business and made 61 percent out of it
+ --I love you my dear Bill, yours for ever Margaret
+ --Mary is mad at Bill for breaking their couple apart
+ --Hapiness var of Margaret :  6
+ --Bill met with Mary and is fine but does not really care about other people
+ --Hapiness var of Bill :  1
+ ------------------------------------------------------------- 
+Episode 56
+ --Bob met with Margaret and is thrilled about it
+ --Bob and Margaret made business and made -10 percent out of it
+ --Hapiness var of Bob :  1
+ ------------------------------------------------------------- 
+Episode 57
+ --Margaret met with Mary and is fine but does not really care about other people
+ --Hapiness var of Margaret :  1
+ --Melany met with Bill and is happy about it
+ --Melany and Bill made business and made -12 percent out of it
+ --Hapiness var of Melany :  0
+ ------------------------------------------------------------- 
+Episode 58
+ --Melany met with Margaret and is happy about it
+ --Melany and Margaret made business and made -27 percent out of it
+ --Hapiness var of Melany :  0
+ ------------------------------------------------------------- 
+Episode 59
+ --Bill met with Bob and is fine but does not really care about other people
+ --Bill and Bob made business and made -13 percent out of it
+ --Hapiness var of Bill : -1
+ --Bob met with Margaret and is thrilled about it
+ --Bob and Margaret made business and made  4 percent out of it
+ --Hapiness var of Bob :  5
+ ------------------------------------------------------------- 
+Episode 60
+ --Bill met with Bob and is fine but does not really care about other people
+ --Bill and Bob made business and made -9 percent out of it
+ --Hapiness var of Bill : -1
+ --Mary met with Melany and is happy about it
+ --Mary and Melany made business and made  7 percent out of it
+ --Hapiness var of Mary :  4
+ ------------------------------------------------------------- 
+Episode 61
+ --Margaret met with Mary and is fine but does not really care about other people
+ --Hapiness var of Margaret :  1
+ --Mary met with Bill and is happy about it
+ --Mary and Bill made business and made 12 percent out of it
+ --Hapiness var of Mary :  4
+ ------------------------------------------------------------- 
+Episode 62
+ --Bill met with Mary and is fine but does not really care about other people
+ --Bill and Mary made business and made  8 percent out of it
+ --I love you my dear Mary, yours for ever Bill
+ --Margaret is mad at Bill for breaking their couple apart
+ --Hapiness var of Bill :  6
+ --Bob met with Bill and is thrilled about it
+ --Bob and Bill made business and made  5 percent out of it
+ --Hapiness var of Bob :  5
+ ------------------------------------------------------------- 
+Episode 63
+ --Margaret met with Bob and is fine but does not really care about other people
+ --Margaret and Bob made business and made 34 percent out of it
+ --I love you my dear Bob, yours for ever Margaret
+ --Melany is mad at Bob for breaking their couple apart
+ --Hapiness var of Margaret :  6
+ ------------------------------------------------------------- 
+Episode 64
+ --Bill met with Bob and is fine but does not really care about other people
+ --Bill and Bob made business and made 10 percent out of it
+ --Hapiness var of Bill :  3
+ --Mary met with Melany and is happy about it
+ --Mary and Melany made business and made -26 percent out of it
+ --Hapiness var of Mary :  0
+ ------------------------------------------------------------- 
+Episode 65
+ --Bill met with Melany and is fine but does not really care about other people
+ --Bill and Melany made business and made  6 percent out of it
+ --Hapiness var of Bill :  3
+ ------------------------------------------------------------- 
+Episode 66
+ --Melany met with Mary and is happy about it
+ --Melany and Mary made business and made 11 percent out of it
+ --Hapiness var of Melany :  4
+ --Mary met with Margaret and is happy about it
+ --Mary and Margaret made business and made  5 percent out of it
+ --Hapiness var of Mary :  4
+ --Bob met with Melany and is thrilled about it
+ --Hapiness var of Bob :  3
+ ------------------------------------------------------------- 
+Episode 67
+ --Melany met with Mary and is happy about it
+ --Melany and Mary made business and made 23 percent out of it
+ --Hapiness var of Melany :  4
+ --Bob met with Margaret and is thrilled about it
+ --Bob and Margaret made business and made 43 percent out of it
+ --Glad to see you my beloved Margaret, yours lovely Bob
+ --Hapiness var of Bob :  6
+ ------------------------------------------------------------- 
+Episode 68
+ --Mary met with Margaret and is happy about it
+ --Mary and Margaret made business and made -38 percent out of it
+ --Hapiness var of Mary :  0
+ --Margaret met with Melany and is fine but does not really care about other people
+ --Margaret and Melany made business and made -16 percent out of it
+ --Hapiness var of Margaret : -1
+ --Bob met with Melany and is thrilled about it
+ --Bob and Melany made business and made  3 percent out of it
+ --Hapiness var of Bob :  5
+ ------------------------------------------------------------- 
+Episode 69
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Hapiness var of Bill :  1
+ ------------------------------------------------------------- 
+Episode 70
+ --Margaret met with Mary and is fine but does not really care about other people
+ --Margaret and Mary made business and made -52 percent out of it
+ --Hapiness var of Margaret : -1
+ --Melany met with Bob and is happy about it
+ --Melany and Bob made business and made 15 percent out of it
+ --I love you my dear Bob, yours for ever Melany
+ --Margaret is mad at Bob for breaking their couple apart
+ --Hapiness var of Melany :  7
+ ------------------------------------------------------------- 
+Episode 71
+ --Melany met with Bill and is happy about it
+ --Melany and Bill made business and made  9 percent out of it
+ --I love you my dear Bill, yours for ever Melany
+ --Bob is mad at Melany for breaking their couple apart
+ --Mary is mad at Bill for breaking their couple apart
+ --Hapiness var of Melany :  7
+ ------------------------------------------------------------- 
+Episode 72
+ --Melany met with Mary and is happy about it
+ --Melany and Mary made business and made  8 percent out of it
+ --Hapiness var of Melany :  4
+ --Bill met with Melany and is fine but does not really care about other people
+ --Bill and Melany made business and made 19 percent out of it
+ --Glad to see you my beloved Melany, yours lovely Bill
+ --Hapiness var of Bill :  4
+ ------------------------------------------------------------- 
+Episode 73
+ --Margaret met with Mary and is fine but does not really care about other people
+ --Margaret and Mary made business and made -51 percent out of it
+ --Hapiness var of Margaret : -1
+ ------------------------------------------------------------- 
+Episode 74
+ --Bob met with Margaret and is thrilled about it
+ --Hapiness var of Bob :  3
+ ------------------------------------------------------------- 
+Episode 75
+ --Bob met with Margaret and is thrilled about it
+ --Bob and Margaret made business and made -4 percent out of it
+ --Hapiness var of Bob :  1
+ --Melany met with Bill and is happy about it
+ --Melany and Bill made business and made -29 percent out of it
+ --Glad to see you my beloved Bill, yours lovely Melany
+ --Hapiness var of Melany :  1
+ --Bill met with Melany and is fine but does not really care about other people
+ --Bill and Melany made business and made 10 percent out of it
+ --Glad to see you my beloved Melany, yours lovely Bill
+ --Hapiness var of Bill :  4
+ ------------------------------------------------------------- 
+Episode 76
+ --Margaret met with Mary and is fine but does not really care about other people
+ --Margaret and Mary made business and made 22 percent out of it
+ --Hapiness var of Margaret :  3
+ ------------------------------------------------------------- 
+Episode 77
+ --Melany met with Mary and is happy about it
+ --Melany and Mary made business and made -16 percent out of it
+ --Hapiness var of Melany :  0
+ --Bob met with Mary and is thrilled about it
+ --Bob and Mary made business and made -21 percent out of it
+ --I love you my dear Mary, yours for ever Bob
+ --Hapiness var of Bob :  4
+ --Margaret met with Bob and is fine but does not really care about other people
+ --Margaret and Bob made business and made -1 percent out of it
+ --Hapiness var of Margaret : -1
+ ------------------------------------------------------------- 
+Episode 78
+ --Mary met with Bill and is happy about it
+ --Hapiness var of Mary :  2
+ --Margaret met with Melany and is fine but does not really care about other people
+ --Margaret and Melany made business and made 24 percent out of it
+ --Hapiness var of Margaret :  3
+ ------------------------------------------------------------- 
+Episode 79
+ --Margaret met with Bob and is fine but does not really care about other people
+ --Margaret and Bob made business and made 31 percent out of it
+ --Hapiness var of Margaret :  3
+ --Mary met with Bill and is happy about it
+ --Mary and Bill made business and made 40 percent out of it
+ --Hapiness var of Mary :  4
+ ------------------------------------------------------------- 
+Episode 80
+ --=== Mary suicided out of financial ruin === 
+ --=== Bob sucided with Mary out of love ===
+ --Bill is sad after Bob and Mary suicide
+ --Bob is sad after Bob and Mary suicide
+ --Mary is sad after Bob and Mary suicide
+ --Margaret is sad after Bob and Mary suicide
+ --Melany is sad after Bob and Mary suicide
+ ------------------------------------------------------------- 
+Episode 81
+ ------------------------------------------------------------- 
+Episode 82
+ ------------------------------------------------------------- 
+Episode 83
+ ------------------------------------------------------------- 
+Episode 84
+ ------------------------------------------------------------- 
+Episode 85
+ --Margaret met with Melany and is fine but does not really care about other people
+ --Margaret and Melany made business and made -15 percent out of it
+ --Hapiness var of Margaret : -1
+ ------------------------------------------------------------- 
+Episode 86
+ --Melany met with Margaret and is happy about it
+ --Melany and Margaret made business and made -1 percent out of it
+ --Hapiness var of Melany :  0
+ ------------------------------------------------------------- 
+Episode 87
+ ------------------------------------------------------------- 
+Episode 88
+ ------------------------------------------------------------- 
+Episode 89
+ --Bill met with Melany and is fine but does not really care about other people
+ --Bill and Melany made business and made -0 percent out of it
+ --Glad to see you my beloved Melany, yours lovely Bill
+ --Hapiness var of Bill :  0
+ --Melany met with Margaret and is happy about it
+ --Melany and Margaret made business and made 54 percent out of it
+ --Hapiness var of Melany :  4
+ ------------------------------------------------------------- 
+Episode 90
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made  6 percent out of it
+ --Hapiness var of Bill :  3
+ ------------------------------------------------------------- 
+Episode 91
+ ------------------------------------------------------------- 
+Episode 92
+ --Margaret met with Melany and is fine but does not really care about other people
+ --Margaret and Melany made business and made -11 percent out of it
+ --Hapiness var of Margaret : -1
+ ------------------------------------------------------------- 
+Episode 93
+ ------------------------------------------------------------- 
+Episode 94
+ ------------------------------------------------------------- 
+Episode 95
+ --Margaret met with Bill and is fine but does not really care about other people
+ --Margaret and Bill made business and made -42 percent out of it
+ --I love you my dear Bill, yours for ever Margaret
+ --Melany is mad at Bill for breaking their couple apart
+ --Hapiness var of Margaret :  2
+ ------------------------------------------------------------- 
+Episode 96
+ ------------------------------------------------------------- 
+Episode 97
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made  1 percent out of it
+ --Glad to see you my beloved Margaret, yours lovely Bill
+ --Hapiness var of Bill :  4
+ ------------------------------------------------------------- 
+Episode 98
+ ------------------------------------------------------------- 
+Episode 99
+ ------------------------------------------------------------- 
+Episode 100
+ --Bill met with Margaret and is fine but does not really care about other people
+ --Bill and Margaret made business and made -10 percent out of it
+ --Glad to see you my beloved Margaret, yours lovely Bill
+ --Hapiness var of Bill :  0
+ ------------------------------------------------------------- 
